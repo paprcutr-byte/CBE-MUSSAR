@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Savlanut — Patience | Mussar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --bg:#f9f7f2;--surface:#ffffff;--surface-2:#f3f0ea;--border:#e0dbd0;
+  --text:#1e1b14;--muted:#6b6558;--faint:#b0aa9e;
+  --gold:#b8860b;--gold-light:#f5eed8;--gold-mid:#e8d5a0;
+  --teal:#1a6b6e;--teal-light:#e0f0f0;
+  --blue:#1a3a6e;--blue-light:#e8eef8;
+  --red:#8b2c2c;--red-light:#f5e8e8;
+  --shadow:0 2px 12px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --radius:0.75rem;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Inter',sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0f0e0b;--surface:#1a1916;--surface-2:#222018;--border:#2e2c26;
+  --text:#e8e3d8;--muted:#8a8478;--faint:#4a4840;
+  --gold:#d4a017;--gold-light:#2a2416;--gold-mid:#3a3010;
+  --teal:#3a9fa3;--teal-light:#0d2526;
+  --blue:#4a7abf;--blue-light:#0d1626;
+  --red:#c45c5c;--red-light:#2a1010;
+  --shadow:0 2px 12px rgba(0,0,0,.3);--shadow-lg:0 8px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;font-size:16px}
+a{color:inherit}button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+nav{background:var(--surface);border-right:1px solid var(--border);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+main{padding:3rem 4rem;max-width:900px}
+.nav-logo{padding:0 1.5rem 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.nav-logo h1{font-family:var(--font-display);font-size:1.5rem;font-weight:700;line-height:1.2;color:var(--teal)}
+.nav-logo p{font-size:.75rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;text-transform:uppercase}
+.nav-section{padding:.5rem 1.5rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:1rem}
+nav a{display:block;padding:.5rem 1.5rem;font-size:.85rem;color:var(--muted);text-decoration:none;border-left:2px solid transparent;transition:all 180ms ease}
+nav a:hover,nav a.active{color:var(--teal);border-left-color:var(--teal);background:var(--teal-light)}
+.nav-footer{margin-top:auto;padding:1rem 1.5rem;border-top:1px solid var(--border)}
+.theme-btn{border:1px solid var(--border);border-radius:var(--radius);padding:.4rem .75rem;font-size:.8rem;color:var(--muted);width:100%;text-align:left;transition:all 180ms ease}
+.theme-btn:hover{border-color:var(--teal);color:var(--teal)}
+section{margin-bottom:4rem;scroll-margin-top:2rem}
+.tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .75rem;border-radius:999px;margin-bottom:.75rem;color:var(--teal);background:var(--teal-light);border:1px solid rgba(26,107,110,.2)}
+h2{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.5rem}
+h3{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:.5rem;margin-top:1.5rem}
+h4{font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.5rem;margin-top:1.25rem;color:var(--teal)}
+p{color:var(--muted);margin-bottom:.75rem;max-width:70ch}
+.lead{font-size:1.05rem;color:var(--text);font-weight:400}
+.hero{border:1px solid var(--border);border-radius:1rem;padding:2.5rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;background:linear-gradient(135deg,var(--surface) 0%,var(--teal-light) 100%)}
+.hero-hebrew{font-family:var(--font-display);font-size:5rem;opacity:.25;line-height:1;text-align:right;direction:rtl;color:var(--teal)}
+.hero-badge{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px;margin-bottom:.75rem;color:#fff;background:var(--teal)}
+.hero h1{font-family:var(--font-display);font-size:3rem;font-weight:700;line-height:1;color:var(--text);margin-bottom:.5rem}
+.hero-sub{font-size:1rem;color:var(--muted)}
+.hero-links{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap}.hero-links a{font-size:.8rem;padding:.35rem .85rem;border-radius:999px;text-decoration:none;font-weight:500}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:box-shadow 180ms ease}.card:hover{box-shadow:var(--shadow)}
+.card-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;color:var(--teal)}
+.card h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text);text-transform:none;letter-spacing:0;margin:0 0 .4rem}
+.card p{font-size:.82rem;margin:0}
+.quote{padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1rem 0;border-left:3px solid var(--teal);background:var(--teal-light)}
+.quote blockquote{font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.5;margin-bottom:.4rem}.quote cite{font-size:.75rem;color:var(--muted);font-style:normal;font-weight:500}
+.practice{border-radius:var(--radius);padding:1.25rem;margin:.75rem 0;border:1px solid var(--teal);background:var(--teal-light)}
+.practice-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem}
+.practice p{font-size:.875rem;color:var(--text);margin:0}
+.spectrum{margin:1.25rem 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
+.spectrum-bar{height:8px;border-radius:4px;margin:1rem 0 .5rem;background:linear-gradient(90deg,var(--red) 0%,var(--teal) 50%,var(--gold) 100%)}
+.spectrum-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);gap:1rem}.spectrum-labels span{flex:1}
+.prompt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1rem;overflow:hidden}
+.prompt-header{padding:.75rem 1.25rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;background:var(--teal)}
+.prompt-day-num{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:#fff;min-width:2rem}
+.prompt-day-label{flex:1;font-size:.9rem;color:#fff;font-weight:500}.prompt-date{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);background:rgba(255,255,255,.15);padding:.2rem .6rem;border-radius:999px}
+.prompt-body{padding:1.25rem}.prompt-q{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:.75rem;line-height:1.5}.prompt-verse{font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--text);line-height:1.4;margin-bottom:.2rem}.prompt-ref{font-size:.72rem;color:var(--muted);font-weight:500}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-top:.75rem}.day-cell{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 180ms ease;flex-direction:column;gap:2px}.day-cell.checked{background:var(--teal);border-color:var(--teal);color:#fff}.day-cell .day-num{font-size:.58rem;opacity:.6}
+.resource-list{list-style:none;display:grid;gap:.5rem;margin-top:.75rem}.resource-list li{display:flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.625rem 1rem;font-size:.85rem}.resource-list li a{text-decoration:none;font-weight:500;color:var(--teal)}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+@media(max-width:768px){.layout{grid-template-columns:1fr}nav{position:static;height:auto}main{padding:1.5rem}.hero{grid-template-columns:1fr}.hero-hebrew{display:none}.card-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+  <div class="nav-logo"><h1>סַבְלָנוּת</h1><p>Savlanut · Patience · Completed</p></div>
+  <a href="mussar-hub.html">← All Middot</a>
+  <div class="nav-section">Overview</div>
+  <a href="#overview" class="active">What Is Savlanut?</a>
+  <a href="#mantra">Mantra &amp; Practice</a>
+  <a href="#spectrum">The Spectrum</a>
+  <a href="#texts">Key Texts</a>
+  <div class="nav-section">Daily Prompts</div>
+  <a href="#week1">Week 1 · May 29–Jun 4</a>
+  <a href="#week2">Week 2 · Jun 5–Jun 11</a>
+  <div class="nav-section">Resources</div>
+  <a href="#tracker">Habit Tracker</a>
+  <a href="#resources">Links &amp; Study</a>
+  <a href="shtikah-silence.html" style="color:var(--blue)">Next: Sh'tikah →</a>
+  <div class="nav-footer"><button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☾ Dark mode</button></div>
+</nav>
+<main>
+  <div class="hero">
+    <div>
+      <span class="hero-badge">✓ Completed · May 29 – June 11, 2026</span>
+      <h1>Savlanut<br>Patience</h1>
+      <p class="hero-sub">Bearing the burden of discomfort with grace — without resentment, without reactive speech, without giving up.</p>
+      <div class="hero-links">
+        <a href="#week1" style="background:var(--teal);color:#fff">Week 1 Prompts</a>
+        <a href="#week2" style="background:var(--surface);border:1px solid var(--border);color:var(--muted)">Week 2 Prompts</a>
+        <a href="shtikah-silence.html" style="background:var(--blue);color:#fff">Next: Sh'tikah →</a>
+      </div>
+    </div>
+    <div class="hero-hebrew">סַבְלָנוּת</div>
+  </div>
+
+  <section id="overview">
+    <div class="tag">The Middah</div>
+    <h2>What Is Savlanut?</h2>
+    <p class="lead">Savlanut is more than waiting. It comes from the root <em>sevel</em> — to bear a burden. Patience, in the Mussar sense, is the capacity to carry something heavy without being crushed by it.</p>
+    <p>This is not passive resignation. It is an active, conscious choice to hold discomfort — a delay, a difficult person, an unresolved situation — with dignity and without reactive speech or action.</p>
+    <div class="quote"><blockquote>“The patient in spirit is better than the proud in spirit.”</blockquote><cite>— Kohelet 7:8</cite></div>
+    <p>American Mussar asks: where on the spectrum is <em>your</em> patience? Not just in obvious moments of frustration, but in small daily irritations — traffic, technology, waiting, being misunderstood.</p>
+    <div class="card-grid">
+      <div class="card" style="border-color:var(--teal);background:var(--teal-light)"><div class="card-label">Hebrew Root</div><h4>ס-ב-ל</h4><p>Sevel — to carry, to bear a load. Patience is not about waiting passively. It is about what you do with the weight while you wait.</p></div>
+      <div class="card" style="border-color:var(--teal);background:var(--teal-light)"><div class="card-label">Erech Apayim</div><h4>Long-Nosed</h4><p>The Hebrew idiom for patience: “long-nosed,” as opposed to short-tempered. Draw out the breath and pause before reacting.</p></div>
+      <div class="card"><div class="card-label">Connection</div><h4>Bridge to Sh'tikah</h4><p>Savlanut and Silence are deeply linked. The patience to wait often requires the silence to not fill the gap with reactive words.</p></div>
+      <div class="card"><div class="card-label">Pirkei Avot</div><h4>Strength of Spirit</h4><p>“Who is mighty? One who subdues their evil inclination.” The Mishnah locates true strength not in force but in self-mastery.</p></div>
+    </div>
+  </section>
+
+  <section id="mantra">
+    <div class="tag">Daily Practice</div>
+    <h2>Mantra &amp; Practice Structure</h2>
+    <div class="practice"><div class="practice-label">Morning Mantra — Write on a card by your bed</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;line-height:1.5">“This too shall pass, and I have the strength to bear the burden until it does.”</p></div>
+    <p style="font-size:.82rem;margin-top:.5rem">Also: <em>Erech apayim</em> — draw out the breath and pause before reacting. Every person has their hour, and everything has its place.</p>
+    <div style="display:grid;gap:.75rem;margin-top:1.25rem">
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">1</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">Morning — Read the mantra aloud</strong><p style="font-size:.82rem;margin:0">Before checking your phone, read the mantra. Set an intention to notice one moment of patience or impatience today.</p></div></div>
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">2</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">Throughout the day — Notice and pause</strong><p style="font-size:.82rem;margin:0">When impatience arises, name it silently: “There is my impatience.” Then breathe and ask: is this about the situation, or my need to control it?</p></div></div>
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex-shrink:0">3</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">Evening — Journal one observation</strong><p style="font-size:.82rem;margin:0">Use the daily prompt below. A few sentences is enough. Write what you noticed, not what you should have done.</p></div></div>
+    </div>
+  </section>
+
+  <section id="spectrum">
+    <div class="tag">The Spectrum</div>
+    <h2>Where Is My Patience?</h2>
+    <p class="lead">Savlanut lives on a spectrum. The goal is the balanced middle — bearing burdens without either passive resignation or reactive impatience.</p>
+    <div class="spectrum"><div style="display:flex;justify-content:space-between;font-size:.75rem;font-weight:600;color:var(--text);margin-bottom:.25rem"><span>Too Much Patience</span><span style="color:var(--teal)">Balanced Savlanut</span><span>Too Little Patience</span></div><div class="spectrum-bar"></div><div class="spectrum-labels"><span>Passive · Suppresses needs<br>Becomes a doormat</span><span>Bearing with dignity<br>Pauses before reacting<br>Holds without resentment</span><span>Reactive · Short-fused<br>Impatient speech<br>Explosive frustration</span></div></div>
+    <div class="card-grid" style="margin-top:1rem">
+      <div class="card" style="border-color:var(--red);background:var(--red-light)"><div class="card-label" style="color:var(--red)">Deficiency</div><p style="font-size:.82rem">Staying silent when you need to speak up. Accepting mistreatment. Becoming so “patient” that you lose yourself in the process.</p></div>
+      <div class="card" style="border-color:var(--gold);background:var(--gold-light)"><div class="card-label" style="color:var(--gold)">Excess</div><p style="font-size:.82rem">Explosive anger, harsh reactive speech, intolerance of small frustrations, treating delay as personal affront.</p></div>
+    </div>
+  </section>
+
+  <section id="texts">
+    <div class="tag">Torah &amp; Tradition</div>
+    <h2>Key Texts on Patience</h2>
+    <div class="quote"><blockquote>“The patient in spirit is better than the proud in spirit.”</blockquote><cite>— Kohelet 7:8</cite></div>
+    <div class="quote"><blockquote>“Do not be quick in your spirit to become angry, for anger rests in the breast of fools.”</blockquote><cite>— Kohelet 7:9</cite></div>
+    <div class="quote"><blockquote>“Whoever is slow to anger has great understanding, but one who has a hasty temper exalts folly.”</blockquote><cite>— Proverbs 14:29</cite></div>
+    <div class="quote"><blockquote>“A patient man calms strife.”</blockquote><cite>— Proverbs 15:18</cite></div>
+    <div class="quote"><blockquote>“The one slow to anger is better than the mighty; one who rules their spirit, than the captor of a city.”</blockquote><cite>— Proverbs 16:32</cite></div>
+    <div class="quote"><blockquote>“Be still before the Lord and wait patiently for Him.”</blockquote><cite>— Psalm 37:7</cite></div>
+    <div class="quote"><blockquote>“Wait for the Lord; be strong, and let your heart be steadfast; wait for the Lord.”</blockquote><cite>— Psalm 27:14</cite></div>
+    <div class="quote"><blockquote>“Who is mighty? One who subdues their evil inclination.”</blockquote><cite>— Pirkei Avot 4:1</cite></div>
+  </section>
+
+  <hr>
+
+  <section id="week1">
+    <div class="tag">Daily Prompts</div>
+    <h2>Week 1 · May 29 – June 4</h2>
+    <p class="lead">One Torah text and one reflection question each day.</p>
+
+    <div class="prompt-card"><div class="prompt-header"><span class="prompt-day-num">1</span><span class="prompt-day-label">May 29</span><span class="prompt-date">Day 1</span></div><div class="prompt-body"><p class="prompt-q">Where in your life are you carrying the heaviest load of impatience right now?</p><p class="prompt-verse">“The patient in spirit is better than the proud in spirit.”</p><p class="prompt-ref">— Kohelet 7:8</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#1d7070"><span class="prompt-day-num">2</span><span class="prompt-day-label">May 30</span><span class="prompt-date">Day 2</span></div><div class="prompt-body"><p class="prompt-q">Think of a moment you lashed out in impatience. What was really going on beneath the surface — whose need was driving it?</p><p class="prompt-verse">“Whoever is slow to anger has great understanding, but one who has a hasty temper exalts folly.”</p><p class="prompt-ref">— Proverbs 14:29</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#207575"><span class="prompt-day-num">3</span><span class="prompt-day-label">May 31</span><span class="prompt-date">Day 3</span></div><div class="prompt-body"><p class="prompt-q">How does savlanut differ from passive resignation? What does it mean to carry a burden with dignity rather than simply give up?</p><p class="prompt-verse">“Be still before the Lord and wait patiently for Him.”</p><p class="prompt-ref">— Psalm 37:7</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#237a7a"><span class="prompt-day-num">4</span><span class="prompt-day-label">Jun 1</span><span class="prompt-date">Day 4</span></div><div class="prompt-body"><p class="prompt-q">The Mishnah says: “Who is mighty? One who conquers their own impulse.” Where did you conquer your impulse toward impatience today?</p><p class="prompt-verse">“Who is mighty? One who subdues their evil inclination.”</p><p class="prompt-ref">— Pirkei Avot 4:1</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#267f7f"><span class="prompt-day-num">5</span><span class="prompt-day-label">Jun 2</span><span class="prompt-date">Day 5</span></div><div class="prompt-body"><p class="prompt-q">When is your patience tested most by other people? Can you locate that impatience as a feeling that “this is about me”?</p><p class="prompt-verse">“A patient man calms strife.”</p><p class="prompt-ref">— Proverbs 15:18</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#298585"><span class="prompt-day-num">6</span><span class="prompt-day-label">Jun 3</span><span class="prompt-date">Day 6</span></div><div class="prompt-body"><p class="prompt-q">Reflect on a time when patience opened a door that anger would have slammed shut. What did that patience cost you? What did it give you?</p><p class="prompt-verse">“Better the end of a thing than its beginning; better patience than pride.”</p><p class="prompt-ref">— Kohelet 7:8</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#2c8a8a"><span class="prompt-day-num">7</span><span class="prompt-day-label">Jun 4</span><span class="prompt-date">End of Week 1</span></div><div class="prompt-body"><p class="prompt-q">How has your “patience muscle” changed? Where did you notice improvement — even briefly?</p><p class="prompt-verse">“The one slow to anger is better than the mighty; one who rules their spirit, than the captor of a city.”</p><p class="prompt-ref">— Proverbs 16:32</p></div></div>
+  </section>
+
+  <section id="week2">
+    <div class="tag">Daily Prompts</div>
+    <h2>Week 2 · June 5 – June 11</h2>
+    <div class="prompt-card"><div class="prompt-header" style="background:#2f8f8f"><span class="prompt-day-num">8</span><span class="prompt-day-label">Jun 5</span><span class="prompt-date">Day 8</span></div><div class="prompt-body"><p class="prompt-q">What recurring situation is still testing your patience? What happens if you stop trying to control it?</p><p class="prompt-verse">“Do not be quick in your spirit to become angry, for anger rests in the breast of fools.”</p><p class="prompt-ref">— Kohelet 7:9</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#329595"><span class="prompt-day-num">9</span><span class="prompt-day-label">Jun 6</span><span class="prompt-date">Day 9</span></div><div class="prompt-body"><p class="prompt-q">Where did you bear discomfort today without complaint? The root of savlanut is to carry — what are you carrying for someone else today?</p><p class="prompt-verse">“Bear one another's burdens” — echoing Torah's neighbor-love.</p><p class="prompt-ref">— Leviticus 19:18</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#359a9a"><span class="prompt-day-num">10</span><span class="prompt-day-label">Jun 7</span><span class="prompt-date">Day 10</span></div><div class="prompt-body"><p class="prompt-q">When delay appears, what story do you tell yourself? Try rewriting that story with humility and spaciousness.</p><p class="prompt-verse">“Wait for the Lord; be strong, and let your heart be steadfast; wait for the Lord.”</p><p class="prompt-ref">— Psalm 27:14</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#389f9f"><span class="prompt-day-num">11</span><span class="prompt-day-label">Jun 8</span><span class="prompt-date">Day 11</span></div><div class="prompt-body"><p class="prompt-q">Notice the physical sensations of impatience today. Where did you feel them in your body, and what happened when you breathed through them?</p><p class="prompt-verse">“From my narrow place I called to God; God answered me with expansiveness.”</p><p class="prompt-ref">— Psalm 118:5</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#3aa4a4"><span class="prompt-day-num">12</span><span class="prompt-day-label">Jun 9</span><span class="prompt-date">Day 12</span></div><div class="prompt-body"><p class="prompt-q">Who in your life most needs your patience right now? What would it look like to give them room without resentment?</p><p class="prompt-verse">“Love your neighbor as yourself.”</p><p class="prompt-ref">— Leviticus 19:18</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#3ca9a9"><span class="prompt-day-num">13</span><span class="prompt-day-label">Jun 10</span><span class="prompt-date">Day 13</span></div><div class="prompt-body"><p class="prompt-q">What burden feels heavy today? Can you carry it consciously rather than letting it carry you?</p><p class="prompt-verse">“Cast your burden upon the Lord, and He will sustain you; He will never let the righteous be shaken.”</p><p class="prompt-ref">— Psalm 55:23</p></div></div>
+    <div class="prompt-card"><div class="prompt-header" style="background:#3eaeae"><span class="prompt-day-num">14</span><span class="prompt-day-label">Jun 11</span><span class="prompt-date">Session Day</span></div><div class="prompt-body"><p class="prompt-q">What have you learned about savlanut? What one small practice do you want to carry into the next middah?</p><p class="prompt-verse">“Teach us to number our days, that we may gain a heart of wisdom.”</p><p class="prompt-ref">— Psalm 90:12</p></div></div>
+  </section>
+
+  <hr>
+
+  <section id="tracker">
+    <div class="tag">Habit Tracker</div>
+    <h2>Two-Week Tracker</h2>
+    <p class="lead">Completed cycle — May 29 through June 11, 2026.</p>
+    <h4>Morning Mantra</h4><div class="day-grid" id="mantraGrid"></div>
+    <h4 style="margin-top:1.5rem">Evening Journal</h4><div class="day-grid" id="journalGrid"></div>
+    <p id="trackerSummary" style="font-size:.85rem;color:var(--teal);font-weight:500;margin-top:1rem"></p>
+  </section>
+
+  <hr>
+
+  <section id="resources">
+    <div class="tag">Links &amp; Study</div>
+    <h2>Resources</h2>
+    <ul class="resource-list">
+      <li><span>🌐</span><a href="https://americanmussar.com" target="_blank" rel="noopener noreferrer">American Mussar — Greg Marcus</a> — framework and soul trait profiles</li>
+      <li><span>📜</span><a href="https://www.sefaria.org/Pirkei_Avot.4.1" target="_blank" rel="noopener noreferrer">Sefaria: Pirkei Avot 4:1</a> — Ben Zoma on strength</li>
+      <li><span>📚</span><a href="https://www.thriftbooks.com/w/the-spiritual-practice-of-good-actions-finding-balance-through-the-soul-traits-of-mussar_greg-marcus/11433730/" target="_blank" rel="noopener noreferrer">The Spiritual Practice of Good Actions — Greg Marcus</a></li>
+    </ul>
+    <div class="quote" style="margin-top:1.5rem"><blockquote>“Every person has their hour, and everything has its place.”</blockquote><cite>— Pirkei Avot 4:3</cite></div>
+    <div style="margin-top:1.5rem;padding:1.25rem;background:var(--teal-light);border:1px solid var(--teal);border-radius:var(--radius)"><p style="font-size:.82rem;color:var(--text);margin:0"><strong>Ready for the next middah?</strong> Savlanut and Sh'tikah work together — the patience to wait often requires the silence to hold back reactive speech. <a href="shtikah-silence.html" style="color:var(--blue);font-weight:600">Continue to Sh'tikah →</a></p></div>
+  </section>
+</main>
+</div>
+<script>
+let _t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+document.documentElement.setAttribute('data-theme', _t);
+const _btn = document.getElementById('themeBtn');
+if (_btn) _btn.textContent = _t === 'dark' ? '☀ Light mode' : '☾ Dark mode';
+function toggleTheme(){_t=_t==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',_t);document.getElementById('themeBtn').textContent=_t==='dark'?'☀ Light mode':'☾ Dark mode';}
+const sections=document.querySelectorAll('section[id]');const navLinks=document.querySelectorAll('nav a[href^="#"]');window.addEventListener('scroll',()=>{let current='';sections.forEach(section=>{if(window.scrollY>=section.offsetTop-80) current=section.id;});navLinks.forEach(link=>{link.classList.remove('active');if(link.getAttribute('href')==='#'+current) link.classList.add('active');});},{passive:true});
+const trackerData={mantra:{},journal:{}};const startDate=new Date('2026-05-29');
+function buildGrid(id,key){const c=document.getElementById(id);const days=['S','M','T','W','T','F','S'];for(let i=0;i<14;i++){const d=new Date(startDate);d.setDate(d.getDate()+i);const label=(d.getMonth()+1)+'/'+d.getDate();const cell=document.createElement('div');cell.className='day-cell';cell.innerHTML='<span class="day-num">'+label+'</span><span>'+days[d.getDay()]+'</span>';cell.onclick=()=>{trackerData[key][i]=!trackerData[key][i];cell.className='day-cell'+(trackerData[key][i]?' checked':'');cell.innerHTML='<span class="day-num">'+label+'</span><span>'+(trackerData[key][i]?'✓':days[d.getDay()])+'</span>';updateSummary();};c.appendChild(cell);}}
+function updateSummary(){const m=Object.values(trackerData.mantra).filter(Boolean).length;const j=Object.values(trackerData.journal).filter(Boolean).length;document.getElementById('trackerSummary').textContent='Mantra: '+m+'/14 · Journal: '+j+'/14';}
+buildGrid('mantraGrid','mantra');buildGrid('journalGrid','journal');updateSummary();
+</script>
+</body>
+</html>

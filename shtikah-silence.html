@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sh'tikah — Silence | Mussar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root,[data-theme="light"]{
+  --bg:#f9f7f2;--surface:#ffffff;--surface-2:#f3f0ea;--border:#e0dbd0;
+  --text:#1e1b14;--muted:#6b6558;--faint:#b0aa9e;--inverse:#f9f7f2;
+  --gold:#b8860b;--gold-light:#f5eed8;--gold-mid:#e8d5a0;
+  --teal:#1a6b6e;--teal-light:#e0f0f0;
+  --red:#8b2c2c;--red-light:#f5e8e8;
+  --blue:#1a3a6e;--blue-light:#e8eef8;
+  --shadow:0 2px 12px rgba(0,0,0,.08);--shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --radius:0.75rem;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Inter',sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0f0e0b;--surface:#1a1916;--surface-2:#222018;--border:#2e2c26;
+  --text:#e8e3d8;--muted:#8a8478;--faint:#4a4840;--inverse:#0f0e0b;
+  --gold:#d4a017;--gold-light:#2a2416;--gold-mid:#3a3010;
+  --teal:#3a9fa3;--teal-light:#0d2526;
+  --red:#c45c5c;--red-light:#2a1010;
+  --blue:#4a7abf;--blue-light:#0d1626;
+  --shadow:0 2px 12px rgba(0,0,0,.3);--shadow-lg:0 8px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+nav{background:var(--surface);border-right:1px solid var(--border);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+main{padding:3rem 4rem;max-width:900px}
+.nav-logo{padding:0 1.5rem 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1rem}
+.nav-logo h1{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--blue);line-height:1.2}
+.nav-logo p{font-size:.75rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;text-transform:uppercase}
+.nav-section{padding:.5rem 1.5rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:1rem}
+nav a{display:block;padding:.5rem 1.5rem;font-size:.85rem;color:var(--muted);text-decoration:none;border-left:2px solid transparent;transition:all 180ms ease}
+nav a:hover{color:var(--blue);border-left-color:var(--blue);background:var(--blue-light)}
+nav a.active{color:var(--blue);border-left-color:var(--blue);background:var(--blue-light);font-weight:500}
+nav a.back-link{color:var(--gold);font-size:.78rem}
+nav a.back-link:hover{color:var(--gold);border-left-color:var(--gold);background:var(--gold-light)}
+.nav-footer{margin-top:auto;padding:1rem 1.5rem;border-top:1px solid var(--border)}
+.theme-btn{background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.4rem .75rem;font-size:.8rem;color:var(--muted);cursor:pointer;width:100%;text-align:left;transition:all 180ms ease}
+.theme-btn:hover{border-color:var(--blue);color:var(--blue)}
+section{margin-bottom:4rem;scroll-margin-top:2rem}
+.section-tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--blue-light);border:1px solid rgba(26,58,110,.25);padding:.25rem .75rem;border-radius:999px;margin-bottom:.75rem}
+.section-tag.gold{color:var(--gold);background:var(--gold-light);border-color:var(--gold-mid)}
+h2{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.5rem}
+h3{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:.5rem;margin-top:1.5rem}
+h4{font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;margin-top:1.25rem}
+p{color:var(--muted);margin-bottom:.75rem;max-width:70ch}.lead{font-size:1.05rem;color:var(--text);font-weight:400}
+.hero{background:linear-gradient(135deg,var(--surface) 0%,var(--blue-light) 100%);border:1px solid var(--border);border-radius:1rem;padding:2.5rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.hero-hebrew{font-family:var(--font-display);font-size:5rem;color:var(--blue);opacity:.25;line-height:1;text-align:right;direction:rtl}
+.hero-badge{display:inline-block;background:var(--blue);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px;margin-bottom:.75rem}
+.hero h1{font-family:var(--font-display);font-size:3rem;font-weight:700;line-height:1;color:var(--text);margin-bottom:.5rem}.hero-sub{font-size:1rem;color:var(--muted)}
+.hero-links{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap}.hero-links a{font-size:.8rem;padding:.35rem .85rem;border-radius:999px;text-decoration:none;font-weight:500;transition:all 180ms ease}.link-primary{background:var(--blue);color:#fff}.link-primary:hover{opacity:.85}.link-secondary{background:var(--surface);border:1px solid var(--border);color:var(--muted)}.link-secondary:hover{border-color:var(--blue);color:var(--blue)}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:box-shadow 180ms ease}.card:hover{box-shadow:var(--shadow)}.card-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}.card h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text);text-transform:none;letter-spacing:0;margin:0 0 .4rem}.card p{font-size:.82rem;margin:0}.card.blue-card{border-color:var(--blue);background:var(--blue-light)}
+.quote{border-left:3px solid var(--blue);background:var(--blue-light);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1rem 0}.quote.gold{border-left-color:var(--gold);background:var(--gold-light)}.quote blockquote{font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.5;margin-bottom:.4rem}.quote cite{font-size:.75rem;color:var(--muted);font-style:normal;font-weight:500}
+.q-list{list-style:none;display:grid;gap:.5rem;margin-top:.75rem}.q-list li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.875rem;color:var(--text);display:grid;grid-template-columns:1.5rem 1fr;gap:.5rem;align-items:start}.q-list li::before{content:'›';color:var(--blue);font-weight:700;font-size:1rem;line-height:1.4}
+.practice{background:var(--blue-light);border:1px solid var(--blue);border-radius:var(--radius);padding:1.25rem;margin:.75rem 0}.practice.teal{background:var(--teal-light);border-color:var(--teal)}.practice-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.practice-label.teal{color:var(--teal)}.practice p{font-size:.875rem;color:var(--text);margin:0}
+.spectrum{margin:1.25rem 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}.spectrum-bar{height:8px;background:linear-gradient(90deg,var(--red) 0%,var(--blue) 50%,var(--teal) 100%);border-radius:4px;margin:1rem 0 .5rem}.spectrum-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted)}.spectrum-labels span:nth-child(2){color:var(--blue);font-weight:600}
+.prompt-week{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.25rem;overflow:hidden}.prompt-week-header{padding:.875rem 1.25rem;background:var(--blue);display:flex;justify-content:space-between;align-items:center}.prompt-week-header.week2{background:#234b8c}.prompt-week-header.week3{background:#2f6a88}.prompt-week-header.week4{background:var(--teal)}.prompt-week-title{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:#fff}.prompt-week-badge{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);padding:.2rem .6rem;border-radius:999px}.prompt-week-body{padding:1.25rem}.prompt-source{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}.prompt-verse{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--text);margin-bottom:.5rem;line-height:1.5}.prompt-ref{font-size:.75rem;color:var(--muted);font-weight:500;margin-bottom:.75rem}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-top:.75rem}.day-cell{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 180ms ease;flex-direction:column;gap:2px}.day-cell:hover{border-color:var(--blue)}.day-cell.checked{background:var(--blue);border-color:var(--blue);color:#fff}.day-cell .day-num{font-size:.6rem;opacity:.6}.day-cell .day-icon{font-size:.85rem}
+.path-toggle{display:flex;gap:.5rem;margin-bottom:1.5rem}.path-btn{flex:1;padding:.6rem 1rem;border:2px solid var(--border);background:var(--surface);border-radius:var(--radius);cursor:pointer;font-family:var(--font-body);font-size:.85rem;font-weight:500;color:var(--muted);transition:all 180ms ease;text-align:center}.path-btn:hover{border-color:var(--blue);color:var(--blue)}.path-btn.active{border-color:var(--blue);background:var(--blue);color:#fff}.path-content{display:none}.path-content.visible{display:block}
+.integration-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start}.integration-icon{width:40px;height:40px;background:var(--blue-light);border:1px solid var(--blue);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}.integration-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.3rem}.integration-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.3rem}.integration-body{font-size:.82rem;color:var(--muted)}
+.resource-list{list-style:none;display:grid;gap:.5rem;margin-top:.75rem}.resource-list li{display:flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.625rem 1rem;font-size:.85rem}.resource-list li a{color:var(--blue);text-decoration:none;font-weight:500}.resource-list li a:hover{text-decoration:underline}.resource-icon{font-size:1rem;flex-shrink:0}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0}
+@media(max-width:768px){.layout{grid-template-columns:1fr}nav{position:static;height:auto}main{padding:1.5rem}.hero{grid-template-columns:1fr}.hero-hebrew{display:none}.card-grid{grid-template-columns:1fr}.path-toggle{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="sidebar">
+  <div class="nav-logo"><h1>שְׁתִיקָה</h1><p>Sh'tikah · Silence · June–July 2026</p></div>
+  <a href="mussar-hub.html" class="back-link" style="padding:.5rem 1.5rem;font-size:.78rem">← All Middot</a>
+  <div class="nav-section">This Month</div>
+  <a href="#overview" class="active">What Is Sh'tikah?</a>
+  <a href="#mantra">Mantra &amp; Daily Practice</a>
+  <a href="#spectrum">The Spectrum</a>
+  <a href="#texts">Key Texts</a>
+  <div class="nav-section">Practice Paths</div>
+  <a href="#path-a">Path A — Full Month</a>
+  <a href="#path-b">Path B — Integration</a>
+  <div class="nav-section">Weekly Prompts</div>
+  <a href="#week1">Week 1 · Listening</a>
+  <a href="#week2">Week 2 · Guarding the Tongue</a>
+  <a href="#week3">Week 3 · Silence &amp; Anger</a>
+  <a href="#week4">Week 4 · Speaking Up</a>
+  <div class="nav-section">Resources</div>
+  <a href="#tracker">Month Tracker</a>
+  <a href="#resources">Links &amp; Study</a>
+  <a href="mussar-session.html" style="color:var(--teal)">← Savlanut Session Notes</a>
+  <div class="nav-footer"><button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light mode</button></div>
+</nav>
+<main>
+  <div class="hero">
+    <div>
+      <div class="hero-badge">Active · June 12 – July 9, 2026</div>
+      <h1>Sh'tikah<br>Silence</h1>
+      <p class="hero-sub">A full month working the soul trait of silence — deliberate speech, guarding the tongue, and the holy pause before we react.</p>
+      <div class="hero-links">
+        <a href="#path-a" class="link-primary">Path A — Silence All Month</a>
+        <a href="#path-b" class="link-secondary">Path B — Integration</a>
+      </div>
+    </div>
+    <div class="hero-hebrew">שְׁתִיקָה</div>
+  </div>
+  <section id="overview">
+    <div class="section-tag">The Middah</div>
+    <h2>What Is Sh'tikah?</h2>
+    <p class="lead">In Mussar, Silence is not the absence of sound. It is a deliberate pause — taken before we speak — to make sure that our words are truthful, necessary, and bring benefit to the world.</p>
+    <p>The soul trait of Sh'tikah governs two things at once: what we should say, and what we should choose not to say. It is the mindful gap in which we choose our words — rather than letting habit, anxiety, or anger choose for us.</p>
+    <div class="quote"><blockquote>"All my days I have grown up among the wise, and I have found nothing better for the body than silence."</blockquote><cite>— Pirkei Avot 1:17, Shimon ben Gamliel</cite></div>
+    <p>The <em>Cheshbon HaNefesh</em> offers the foundational Mussar practice for this middah: <em>"Before you open your mouth, be silent and reflect: What benefit will my speech bring to me or others?"</em> This single question, asked before every significant utterance, is the entire practice in miniature.</p>
+    <div class="card-grid">
+      <div class="card blue-card"><div class="card-label">Hebrew Root</div><h4>שׁ-ת-ק</h4><p>Sh-t-k. To be still, to be quiet. Also connected to the idea of being settled, composed. Silence in Jewish thought is never passive — it is a chosen posture.</p></div>
+      <div class="card blue-card"><div class="card-label">Sh'mirat HaLashon</div><h4>Guarding the Tongue</h4><p>The active dimension of Sh'tikah. Guarding against gossip, reactive speech, harsh words, and anything that spreads harm — even when technically true.</p></div>
+      <div class="card"><div class="card-label">Miyut Sichah</div><h4>Minimum of Small Talk</h4><p>One of the 48 Steps in Pirkei Avot 6:6 — a minimum of idle speech. Not no conversation, but purposeful conversation. Quality over quantity of words.</p></div>
+      <div class="card"><div class="card-label">Hitbodedut</div><h4>Silent Retreat</h4><p>A core Mussar and Hasidic practice: dedicated time in silence and solitude for self-reflection. Even 10 minutes each morning is a form of hitbodedut.</p></div>
+    </div>
+  </section>
+  <section id="mantra">
+    <div class="section-tag">Daily Practice</div>
+    <h2>Mantra &amp; Practice Structure</h2>
+    <p class="lead">American Mussar practice has three parts: morning mantra, mindful action throughout the day, and evening journaling.</p>
+    <div class="practice"><div class="practice-label">Morning Mantra — Write on a card by your bed</div><p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--text);line-height:1.5">"Before I open my mouth, I will pause in silence and ask: what good will these words bring?"</p></div>
+    <p style="font-size:.82rem;margin-top:.5rem">Drawn from <em>Cheshbon HaNefesh</em>: <em>"Before you open your mouth, be silent and reflect: What benefit will my speech bring to me or others?"</em></p>
+    <h4>The Three-Part Daily Structure</h4>
+    <div style="display:grid;gap:.75rem;margin-top:.75rem">
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">1</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">Morning Silence — 10 minutes</strong><p style="font-size:.82rem;margin:0">Begin the day without words. Sit quietly, breathe, and bring the mantra to mind before touching your phone or speaking to anyone.</p></div></div>
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">2</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">The 3-Second Pause</strong><p style="font-size:.82rem;margin:0">Before responding in conversation — especially when frustrated, anxious, or angry — count silently to three. Ask yourself: Is this necessary? Is it kind? Is it true?</p></div></div>
+      <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem"><div style="width:2.5rem;height:2.5rem;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0">3</div><div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem">Evening Journal</strong><p style="font-size:.82rem;margin:0">Review one conversation from the day. Where did you speak too quickly? Or stay silent when your voice was needed? Write it down.</p></div></div>
+    </div>
+  </section>
+  <section id="spectrum">
+    <div class="section-tag">The Spectrum</div>
+    <h2>Where Is My Silence?</h2>
+    <p class="lead">The goal is not total silence — it is the balanced, discerning middle that honors both truth and relationship.</p>
+    <div class="spectrum"><div style="display:flex;justify-content:space-between;font-size:.75rem;font-weight:600;color:var(--text);margin-bottom:.25rem"><span>Too Much Silence</span><span style="color:var(--blue)">Balanced Sh'tikah</span><span>Too Little Silence</span></div><div class="spectrum-bar"></div><div class="spectrum-labels"><span>Withholding · Passive<br>Fails to speak up</span><span>Deliberate · Mindful<br>Speaks when needed</span><span>Reactive · Impulsive<br>Words that wound</span></div></div>
+    <div class="quote" style="margin-top:1rem"><blockquote>"There is a time to be silent and a time to speak."</blockquote><cite>— Kohelet 3:7</cite></div>
+  </section>
+  <section id="texts">
+    <div class="section-tag">Torah &amp; Tradition</div>
+    <h2>Key Texts on Silence</h2>
+    <div class="quote"><blockquote>"All my days I have grown up among the wise, and I have found nothing better for the body than silence."</blockquote><cite>— Pirkei Avot 1:17</cite></div>
+    <div class="quote"><blockquote>"Where there is much talking, there is no lack of transgression, but the one who curbs the tongue shows sense."</blockquote><cite>— Proverbs 10:19</cite></div>
+    <div class="quote"><blockquote>"There is a time to be silent and a time to speak."</blockquote><cite>— Kohelet 3:7</cite></div>
+    <div class="quote"><blockquote>"Silence at the time of anger is like water on a fire."</blockquote><cite>— Mussar teaching</cite></div>
+    <div class="quote"><blockquote>"Before you open your mouth, be silent and reflect: What benefit will my speech bring to me or others?"</blockquote><cite>— Cheshbon HaNefesh</cite></div>
+    <div class="quote"><blockquote>"Death and life are in the power of the tongue."</blockquote><cite>— Proverbs 18:21</cite></div>
+    <div class="quote gold"><blockquote>"Aaron was silent."</blockquote><cite>— Leviticus 10:3</cite></div>
+  </section>
+  <hr>
+  <section id="path-a">
+    <div class="section-tag gold">Choose Your Path</div>
+    <h2>Two Practice Paths</h2>
+    <p class="lead">Choose the path that fits where you are — or weave them together in the final two weeks.</p>
+    <div class="path-toggle"><button class="path-btn active" onclick="showPath('a', this)">Path A — Silence All Month</button><button class="path-btn" onclick="showPath('b', this)">Path B — Silence + Integration</button></div>
+    <div id="pathA" class="path-content visible"><div class="practice"><div class="practice-label">Path A</div><p><strong>Work Sh'tikah for the full month.</strong> Use the mantra, the daily practice, the weekly Torah prompts below, and the habit tracker. Each week has a different theme and practice focus.</p></div><ul class="q-list"><li><span>Morning: 10 minutes of silence before engaging with the world</span></li><li><span>Throughout the day: the 3-second pause before speech in charged moments</span></li><li><span>Weekly: one specific practice from the prompt card below</span></li><li><span>Evening: journal one observation about your speech and silence each day</span></li></ul></div>
+    <div id="pathB" class="path-content"><div class="practice teal"><div class="practice-label teal">Path B — Final Two Weeks</div><p><strong>Spend the first two weeks on Sh'tikah alone.</strong> Then in weeks 3 and 4, weave Silence together with our earlier middot.</p></div><div id="path-b" style="margin-top:1rem"><div class="integration-card"><div class="integration-icon">⏳</div><div><div class="integration-label">Silence + Savlanut</div><div class="integration-title">Silence Deepens Patience</div><div class="integration-body">When you feel impatience rising, add a silent pause before any words. Use silence to bear the burden before speaking.</div></div></div><div class="integration-card"><div class="integration-icon">🪶</div><div><div class="integration-label">Silence + Anavah</div><div class="integration-title">Silence Creates Space for Humility</div><div class="integration-body">Practice occupying a rightful space in conversation. Where is it humble to hold back? Where is it humble to finally speak?</div></div></div><div class="integration-card"><div class="integration-icon">💎</div><div><div class="integration-label">Silence + Emet</div><div class="integration-title">Silence Can Hide Truth</div><div class="integration-body">Sometimes silence is dishonest. Choose one conversation this week where you will name a truth gently instead of staying silent out of discomfort.</div></div></div></div></div>
+  </section>
+  <hr>
+  <section id="week1">
+    <div class="section-tag">4-Week Prompts</div>
+    <h2>Torah Prompts — Month of Sh'tikah</h2>
+    <p class="lead">One text, one theme, and one practice focus per week.</p>
+    <div class="prompt-week"><div class="prompt-week-header"><div class="prompt-week-title">Week 1 · Listening</div><div class="prompt-week-badge">June 12–18</div></div><div class="prompt-week-body"><div class="prompt-source">Pirkei Avot 1:17</div><div class="prompt-verse">"All my days I have grown up among the wise, and I have found nothing better for the body than silence."</div><ul class="q-list"><li><span>What does it mean that someone who grew up among the wise arrived at silence?</span></li><li><span>Where this week did you choose listening over speaking?</span></li><li><span>How did your body feel in moments of silence?</span></li><li><span>When did silence feel like a gift to someone else?</span></li></ul><div class="practice" style="margin-top:.875rem"><div class="practice-label">Week 1 Practice</div><p><strong>10-minute morning silence.</strong> Before you check your phone or speak to anyone, sit in silence for 10 minutes.</p></div></div></div>
+    <div class="prompt-week" id="week2"><div class="prompt-week-header week2"><div class="prompt-week-title">Week 2 · Guarding the Tongue</div><div class="prompt-week-badge">June 19–25</div></div><div class="prompt-week-body"><div class="prompt-source">Proverbs 10:19</div><div class="prompt-verse">"Where there is much talking, there is no lack of transgression, but the one who curbs the tongue shows sense."</div><ul class="q-list"><li><span>Where does much talking lead to small transgressions in your life?</span></li><li><span>Notice one time each day you refrain from sharing a sharp comment.</span></li><li><span>Does speaking less make what you do say more meaningful?</span></li><li><span>Where have you been speaking too much?</span></li></ul><div class="practice" style="margin-top:.875rem"><div class="practice-label">Week 2 Practice</div><p><strong>No gossip day.</strong> Choose one day this week for a complete lashon hara fast.</p></div></div></div>
+    <div class="prompt-week" id="week3"><div class="prompt-week-header week3"><div class="prompt-week-title">Week 3 · Silence &amp; Anger</div><div class="prompt-week-badge">June 26 – July 2</div></div><div class="prompt-week-body"><div class="prompt-source">Mussar Teaching + Kohelet 3:7</div><div class="prompt-verse">"Silence at the time of anger is like water on a fire."</div><ul class="q-list"><li><span>Recall a recent moment of anger. What did your first impulse want to say?</span></li><li><span>How does Sh'tikah connect to Savlanut?</span></li><li><span>How do you know when it is a time to be silent and when it is a time to speak?</span></li><li><span>Where in your life is silence extinguishing a fire?</span></li></ul><div class="practice" style="margin-top:.875rem"><div class="practice-label">Week 3 Practice</div><p><strong>30-second rule.</strong> When anger arises, say nothing for 30 seconds.</p></div></div></div>
+    <div class="prompt-week" id="week4"><div class="prompt-week-header week4"><div class="prompt-week-title">Week 4 · Speaking Up</div><div class="prompt-week-badge">July 3–9</div></div><div class="prompt-week-body"><div class="prompt-source">Leviticus 10:3 + Proverbs 18:21</div><div class="prompt-verse">"Aaron was silent."</div><ul class="q-list"><li><span>What kind of silence has your month produced?</span></li><li><span>Where did you stay silent this month when your voice was needed?</span></li><li><span>What life-giving words have you been holding back?</span></li><li><span>What has a month of Sh'tikah revealed about your relationships and spiritual life?</span></li></ul><div class="practice" style="margin-top:.875rem"><div class="practice-label">Week 4 Practice</div><p><strong>Life-giving speech.</strong> Offer one word of affirmation or truth you have been holding back.</p></div></div></div>
+  </section>
+  <hr>
+  <section id="tracker">
+    <div class="section-tag">Habit Tracker</div>
+    <h2>Month Tracker</h2>
+    <p class="lead">Check off each day you practiced your morning silence and completed an evening journal entry.</p>
+    <h4>Morning Silence — 10 Minutes</h4><div class="day-grid" id="silenceGrid"></div>
+    <h4 style="margin-top:1.5rem">Evening Journal Entry</h4><div class="day-grid" id="journalGrid"></div>
+    <h4 style="margin-top:1.5rem">3-Second Pause Used</h4><div class="day-grid" id="pauseGrid"></div>
+    <p id="trackerSummary" style="font-size:.85rem;color:var(--blue);font-weight:500;margin-top:1rem"></p>
+  </section>
+  <hr>
+  <section id="resources">
+    <div class="section-tag">Links &amp; Study</div>
+    <h2>Resources</h2>
+    <ul class="resource-list">
+      <li><span class="resource-icon">🌐</span><a href="https://americanmussar.com/american-mussar-cycle-week-10-silence/" target="_blank" rel="noopener noreferrer">American Mussar: Week 10 — Silence</a></li>
+      <li><span class="resource-icon">📜</span><a href="https://www.sefaria.org/sheets/394020" target="_blank" rel="noopener noreferrer">Sefaria: Silence Sheet</a></li>
+      <li><span class="resource-icon">🎙️</span><a href="https://www.buzzsprout.com/2292140/episodes/17583729-episode-three-the-power-of-silence-summer-series" target="_blank" rel="noopener noreferrer">Living Mussar Podcast: The Power of Silence</a></li>
+      <li><span class="resource-icon">🎬</span><a href="https://crimsonthread.com/videos/mussar-2018/mussar-12-silence/" target="_blank" rel="noopener noreferrer">Crimson Thread: Mussar — Silence</a></li>
+      <li><span class="resource-icon">📖</span><a href="https://www.kavana.org/mussar-reflections/silence-julie-kohl" target="_blank" rel="noopener noreferrer">Kavana Cooperative: Reflections on Silence</a></li>
+    </ul>
+  </section>
+</main>
+</div>
+<script>
+const sections=document.querySelectorAll('section[id]');const navLinks=document.querySelectorAll('nav a[href^="#"]');window.addEventListener('scroll',()=>{let current='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-80)current=s.id;});navLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active');});},{passive:true});
+let theme='light';function toggleTheme(){theme=theme==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',theme);document.getElementById('themeBtn').textContent=theme==='dark'?'☀ Light mode':'☾ Dark mode';}
+function showPath(path,btn){document.querySelectorAll('.path-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.path-content').forEach(c=>c.classList.remove('visible'));btn.classList.add('active');document.getElementById(path==='a'?'pathA':'pathB').classList.add('visible');}
+const trackerData={silence:{},journal:{},pause:{}};const startDate=new Date('2026-06-12');
+function buildGrid(containerId,key){const container=document.getElementById(containerId);const days=['S','M','T','W','T','F','S'];for(let i=0;i<28;i++){const d=new Date(startDate);d.setDate(d.getDate()+i);const label=(d.getMonth()+1)+'/'+d.getDate();const cell=document.createElement('div');cell.className='day-cell';cell.innerHTML='<span class="day-num">'+label+'</span><span class="day-icon">'+(trackerData[key][i]?'✓':days[d.getDay()])+'</span>';cell.onclick=()=>{trackerData[key][i]=!trackerData[key][i];cell.className='day-cell'+(trackerData[key][i]?' checked':'');cell.innerHTML='<span class="day-num">'+label+'</span><span class="day-icon">'+(trackerData[key][i]?'✓':days[d.getDay()])+'</span>';updateSummary();};container.appendChild(cell);}}
+function updateSummary(){const s=Object.values(trackerData.silence).filter(Boolean).length;const j=Object.values(trackerData.journal).filter(Boolean).length;const p=Object.values(trackerData.pause).filter(Boolean).length;document.getElementById('trackerSummary').textContent='Silence: '+s+'/28 · Journal: '+j+'/28 · Pauses: '+p+'/28';}
+buildGrid('silenceGrid','silence');buildGrid('journalGrid','journal');buildGrid('pauseGrid','pause');updateSummary();
+</script>
+</body>
+</html>
