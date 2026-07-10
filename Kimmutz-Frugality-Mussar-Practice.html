@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kimmutz: Frugality — Mussar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root, [data-theme="light"] {
+  --bg:#f9f7f2; --surface:#ffffff; --surface-2:#f3f0ea; --border:#e0dbd0;
+  --text:#1e1b14; --muted:#6b6558; --faint:#b0aa9e; --inverse:#f9f7f2;
+  --gold:#b8860b; --gold-light:#f5eed8; --gold-mid:#e8d5a0;
+  --teal:#1a6b6e; --teal-light:#e0f0f0;
+  --red:#8b2c2c; --red-light:#f5e8e8;
+  --green:#3a6e3a; --green-light:#e6f0e6;
+  --blue:#1a3a6e; --blue-light:#e8eef8;
+  --shadow:0 2px 12px rgba(0,0,0,.08); --shadow-lg:0 8px 32px rgba(0,0,0,.12);
+  --radius:0.75rem; --font-display:'Cormorant Garamond',Georgia,serif; --font-body:'Inter',sans-serif;
+}
+[data-theme="dark"] {
+  --bg:#0f0e0b; --surface:#1a1916; --surface-2:#222018; --border:#2e2c26;
+  --text:#e8e3d8; --muted:#8a8478; --faint:#4a4840; --inverse:#0f0e0b;
+  --gold:#d4a017; --gold-light:#2a2416; --gold-mid:#3a3010;
+  --teal:#3a9fa3; --teal-light:#0d2526;
+  --red:#c45c5c; --red-light:#2a1010;
+  --green:#6ea86e; --green-light:#122a12;
+  --blue:#4a7abf; --blue-light:#0d1626;
+  --shadow:0 2px 12px rgba(0,0,0,.3); --shadow-lg:0 8px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6;}
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+nav{background:var(--surface);border-right:1px solid var(--border);padding:2rem 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
+main{padding:3rem 4rem;max-width:900px;}
+.nav-logo{padding:0 1.5rem 1.5rem;border-bottom:1px solid var(--border);margin-bottom:1rem;}
+.nav-logo h1{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--green);line-height:1.2;}
+.nav-logo p{font-size:.75rem;color:var(--muted);margin-top:.25rem;letter-spacing:.05em;text-transform:uppercase;}
+.nav-section{padding:.5rem 1.5rem;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:1rem;}
+nav a{display:block;padding:.5rem 1.5rem;font-size:.85rem;color:var(--muted);text-decoration:none;border-left:2px solid transparent;transition:all 180ms ease;}
+nav a:hover{color:var(--green);border-left-color:var(--green);background:var(--green-light);}
+nav a.active{color:var(--green);border-left-color:var(--green);background:var(--green-light);font-weight:500;}
+nav a.back-link{color:var(--gold);font-size:.78rem;}
+nav a.back-link:hover{color:var(--gold);border-left-color:var(--gold);background:var(--gold-light);}
+.nav-footer{margin-top:auto;padding:1rem 1.5rem;border-top:1px solid var(--border);}
+.theme-btn{background:none;border:1px solid var(--border);border-radius:var(--radius);padding:.4rem .75rem;font-size:.8rem;color:var(--muted);cursor:pointer;width:100%;text-align:left;transition:all 180ms ease;}
+.theme-btn:hover{border-color:var(--green);color:var(--green);}
+section{margin-bottom:4rem;scroll-margin-top:2rem;}
+.section-tag{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:var(--green-light);border:1px solid rgba(58,110,58,.25);padding:.25rem .75rem;border-radius:999px;margin-bottom:.75rem;}
+.section-tag.gold{color:var(--gold);background:var(--gold-light);border-color:var(--gold-mid);}
+h2{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--text);line-height:1.1;margin-bottom:.5rem;}
+h3{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--text);margin-bottom:.5rem;margin-top:1.5rem;}
+h4{font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;margin-top:1.25rem;}
+p{color:var(--muted);margin-bottom:.75rem;max-width:70ch;}
+.lead{font-size:1.05rem;color:var(--text);font-weight:400;}
+.hero{background:linear-gradient(135deg,var(--surface) 0,var(--green-light) 100%);border:1px solid var(--border);border-radius:1rem;padding:2.5rem;margin-bottom:3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
+.hero-hebrew{font-family:var(--font-display);font-size:5rem;color:var(--green);opacity:.25;line-height:1;text-align:right;direction:rtl;}
+.hero-badge{display:inline-block;background:var(--green);color:#fff;font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px;margin-bottom:.75rem;}
+.hero h1{font-family:var(--font-display);font-size:3rem;font-weight:700;line-height:1;color:var(--text);margin-bottom:.5rem;}
+.hero-sub{font-size:1rem;color:var(--muted);}
+.hero-links{display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap;}
+.hero-links a{font-size:.8rem;padding:.35rem .85rem;border-radius:999px;text-decoration:none;font-weight:500;transition:all 180ms ease;}
+.link-primary{background:var(--green);color:#fff;}
+.link-primary:hover{opacity:.85;}
+.link-secondary{background:var(--surface);border:1px solid var(--border);color:var(--muted);}
+.link-secondary:hover{border-color:var(--green);color:var(--green);}
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:box-shadow 180ms ease;}
+.card:hover{box-shadow:var(--shadow);}
+.card-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;}
+.card h4{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--text);text-transform:none;letter-spacing:0;margin:0 0 .4rem;}
+.card p{font-size:.82rem;margin:0;}
+.card.green-card{border-color:var(--green);background:var(--green-light);}
+.quote{border-left:3px solid var(--green);background:var(--green-light);padding:1rem 1.25rem;border-radius:0 var(--radius) var(--radius) 0;margin:1rem 0;}
+.quote.gold{border-left-color:var(--gold);background:var(--gold-light);}
+.quote blockquote{font-family:var(--font-display);font-size:1.15rem;font-style:italic;color:var(--text);line-height:1.5;margin-bottom:.4rem;}
+.quote cite{font-size:.75rem;color:var(--muted);font-style:normal;font-weight:500;}
+.q-list{list-style:none;display:grid;gap:.5rem;margin-top:.75rem;}
+.q-list li{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.875rem;color:var(--text);display:grid;grid-template-columns:1.5rem 1fr;gap:.5rem;align-items:start;}
+.q-list li::before{content:"?";color:var(--green);font-weight:700;font-size:1rem;line-height:1.4;}
+.practice{background:var(--green-light);border:1px solid var(--green);border-radius:var(--radius);padding:1.25rem;margin:.75rem 0;}
+.practice.teal{background:var(--teal-light);border-color:var(--teal);}
+.practice-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;}
+.practice-label.teal{color:var(--teal);}
+.practice p{font-size:.875rem;color:var(--text);margin:0;}
+.spectrum{margin:1.25rem 0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;}
+.spectrum-bar{height:8px;background:linear-gradient(90deg,var(--red) 0,var(--gold) 50%,var(--blue) 100%);border-radius:4px;margin:1rem 0 .5rem;}
+.spectrum-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);}
+.spectrum-labels span:nth-child(2){color:var(--gold);font-weight:600;}
+.prompt-week{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:1.25rem;overflow:hidden;}
+.prompt-week-header{padding:.875rem 1.25rem;background:var(--green);display:flex;justify-content:space-between;align-items:center;}
+.prompt-week-header.week2{background:#2f6a4b;}
+.prompt-week-title{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:#fff;}
+.prompt-week-badge{font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.75);background:rgba(255,255,255,.15);padding:.2rem .6rem;border-radius:999px;}
+.prompt-week-body{padding:1.25rem;}
+.prompt-source{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:.5rem;}
+.prompt-verse{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--text);margin-bottom:.5rem;line-height:1.5;}
+.day-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:.4rem;margin-top:.75rem;}
+.day-cell{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);border-radius:.5rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all 180ms ease;flex-direction:column;gap:2px;}
+.day-cell:hover{border-color:var(--green);}
+.day-cell.checked{background:var(--green);border-color:var(--green);color:#fff;}
+.day-cell .day-num{font-size:.6rem;opacity:.6;}
+.path-toggle{display:flex;gap:.5rem;margin-bottom:1.5rem;}
+.path-btn{flex:1;padding:.6rem 1rem;border:2px solid var(--border);background:var(--surface);border-radius:var(--radius);cursor:pointer;font-family:var(--font-body);font-size:.85rem;font-weight:500;color:var(--muted);transition:all 180ms ease;text-align:center;}
+.path-btn:hover{border-color:var(--green);color:var(--green);}
+.path-btn.active{border-color:var(--green);background:var(--green);color:#fff;}
+.path-content{display:none;}
+.path-content.visible{display:block;}
+.integration-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:.75rem;display:grid;grid-template-columns:auto 1fr;gap:1rem;align-items:start;}
+.integration-icon{width:40px;height:40px;background:var(--green-light);border:1px solid var(--green);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.integration-label{font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:.3rem;}
+.integration-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.3rem;}
+.integration-body{font-size:.82rem;color:var(--muted);}
+.resource-list{list-style:none;display:grid;gap:.5rem;margin-top:.75rem;}
+.resource-list li{display:flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.625rem 1rem;font-size:.85rem;}
+.resource-list li a{color:var(--green);text-decoration:none;font-weight:500;}
+.resource-list li a:hover{text-decoration:underline;}
+hr{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+@media (max-width:768px){
+  .layout{grid-template-columns:1fr;}
+  nav{position:static;height:auto;}
+  main{padding:1.5rem;}
+  .hero{grid-template-columns:1fr;}
+  .hero-hebrew{display:none;}
+  .card-grid{grid-template-columns:1fr;}
+  .path-toggle{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav id="sidebar">
+  <div class="nav-logo"><h1>Kimmutz</h1><p>July 10 – 23, 2026</p></div>
+  <a href="mussar-hub.html" class="back-link" style="padding:.5rem 1.5rem;font-size:.78rem;">&larr; All Middot</a>
+  <div class="nav-section">This Practice</div>
+  <a href="#overview" class="active">What Is Kimmutz?</a>
+  <a href="#mantra">Mantra &amp; Daily Practice</a>
+  <a href="#spectrum">The Spectrum</a>
+  <a href="#texts">Key Texts</a>
+  <div class="nav-section">Practice Paths</div>
+  <a href="#path-a">Path A: Full Practice</a>
+  <a href="#path-b">Path B: Integration</a>
+  <div class="nav-section">Weekly Prompts</div>
+  <a href="#week1">Week 1: Noticing Enough</a>
+  <a href="#week2">Week 2: Gratitude &amp; Restraint</a>
+  <div class="nav-section">Resources</div>
+  <a href="#tracker">Two-Week Tracker</a>
+  <a href="#resources">Links &amp; Study</a>
+  <a href="Sh-tikah-Silence-Mussar-Practice.html" style="color:var(--teal);">Sh'tikah Practice Notes</a>
+  <div class="nav-footer">
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">Light mode</button>
+  </div>
+</nav>
+<main>
+
+<div class="hero">
+  <div>
+    <div class="hero-badge">Active July 10 – 23, 2026</div>
+    <h1>Kimmutz<br>Frugality</h1>
+    <p class="hero-sub">Two weeks working the soul trait of frugality — mindful sufficiency, wise stewardship of resources, and contentment with what we already have.</p>
+    <div class="hero-links">
+      <a href="#path-a" class="link-primary">Path A: Full Practice</a>
+      <a href="#path-b" class="link-secondary">Path B: Integration</a>
+    </div>
+  </div>
+  <div class="hero-hebrew">קימוץ</div>
+</div>
+
+<section id="overview">
+  <div class="section-tag">The Middah</div>
+  <h2>What Is Kimmutz?</h2>
+  <p class="lead">In Mussar, Frugality is not deprivation. It is the practice of living with exactly what we need — treating our resources as a blessing rather than a possession to hoard or squander.</p>
+  <p>The soul trait of Kimmutz governs our relationship to money, time, food, and energy. It sits at a balance point between two extremes: stinginess, which withholds even from real need, and thoughtless excess, which wastes what could serve others.</p>
+  <div class="quote">
+    <blockquote>Be careful with your money. Do not spend even a penny needlessly, and do not withhold spending on anything that is truly needed.</blockquote>
+    <cite>— Rabbi Mendel of Satanov, Cheshbon HaNefesh</cite>
+  </div>
+  <p>The <em>Cheshbon HaNefesh</em> offers the foundational Mussar practice for this middah: a nightly accounting of the soul, noticing where money or resources were used well, and where they were not. This single daily habit is the entire practice in miniature.</p>
+  <div class="card-grid">
+    <div class="card green-card">
+      <div class="card-label">Hebrew Root</div>
+      <h4>ק-מ-ץ</h4>
+      <p>K-m-tz. To grasp a handful, to gather in a closed hand. Connected to the idea of taking precisely enough — not more, not less.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Bitachon</div>
+      <h4>Trust as Foundation</h4>
+      <p>Frugality is paired with trust. Recognizing that we are provided for eases the anxiety that often drives impulsive acquiring or hoarding.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Hakarat Ha'tov</div>
+      <h4>Gratitude for What Is</h4>
+      <p>Noticing what we already have quiets the restless wanting that frugality is meant to address. Contentment, not scarcity, is the goal.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Stewardship</div>
+      <h4>Resources as Trust</h4>
+      <p>What we have — time, money, energy — is held in trust, not owned outright. Waste and hoarding are both failures of stewardship.</p>
+    </div>
+  </div>
+</section>
+
+<section id="mantra">
+  <div class="section-tag">Daily Practice</div>
+  <h2>Mantra &amp; Practice Structure</h2>
+  <p class="lead">American Mussar practice has three parts: morning mantra, mindful action throughout the day, and evening journaling.</p>
+  <div class="practice">
+    <div class="practice-label">Morning Mantra — Write on a card by your bed</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;color:var(--text);line-height:1.5;">Today I will use exactly what I need, waste nothing, and notice the blessing in what I already have.</p>
+  </div>
+  <p style="font-size:.82rem;margin-top:.5rem;">Drawn from <em>Cheshbon HaNefesh</em>: <em>"Be careful with your money. Do not spend even a penny needlessly, and do not withhold spending on anything that is truly needed."</em></p>
+  <h4>The Three-Part Daily Structure</h4>
+  <div style="display:grid;gap:.75rem;margin-top:.75rem;">
+    <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+      <div style="width:2.5rem;height:2.5rem;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0;">1</div>
+      <div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem;">Morning Check-In</strong><p style="font-size:.82rem;margin:0;">Before the day begins, name one resource — money, food, time — you intend to use mindfully today.</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+      <div style="width:2.5rem;height:2.5rem;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0;">2</div>
+      <div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem;">The Pause Before Purchase</strong><p style="font-size:.82rem;margin:0;">Before any non-essential spending, pause and ask: Do I need this, or do I simply want it right now?</p></div>
+    </div>
+    <div style="display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;align-items:start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+      <div style="width:2.5rem;height:2.5rem;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.9rem;flex-shrink:0;">3</div>
+      <div><strong style="display:block;font-size:.9rem;color:var(--text);margin-bottom:.2rem;">Evening Journal</strong><p style="font-size:.82rem;margin:0;">Review the day's spending and waste. Note any impulsive purchase or discarded resource — and one moment of gratitude for what sufficed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="spectrum">
+  <div class="section-tag">The Spectrum</div>
+  <h2>Where Is My Kimmutz?</h2>
+  <p class="lead">The goal is not austerity — it is the balanced, grateful middle that honors both resourcefulness and generosity.</p>
+  <div class="spectrum">
+    <div style="display:flex;justify-content:space-between;font-size:.75rem;font-weight:600;color:var(--text);margin-bottom:.25rem;">
+      <span>Stinginess</span><span style="color:var(--gold);">Balanced Kimmutz</span><span>Excess &amp; Waste</span>
+    </div>
+    <div class="spectrum-bar"></div>
+    <div class="spectrum-labels">
+      <span>Hoarding · Withholding<br>Even from real need</span>
+      <span>Mindful sufficiency<br>Wise stewardship</span>
+      <span>Impulsive · Wasteful<br>Thoughtless indulgence</span>
+    </div>
+  </div>
+  <div class="quote" style="margin-top:1rem;">
+    <blockquote>Make no expense but to do good to others or yourself; waste nothing.</blockquote>
+    <cite>— Frugality, in the tradition of Benjamin Franklin's virtue list</cite>
+  </div>
+</section>
+
+<section id="texts">
+  <div class="section-tag">Torah &amp; Tradition</div>
+  <h2>Key Texts on Frugality</h2>
+  <div class="quote">
+    <blockquote>Be careful with your money. Do not spend even a penny needlessly, and do not withhold spending on anything that is truly needed.</blockquote>
+    <cite>— Rabbi Mendel of Satanov, Cheshbon HaNefesh</cite>
+  </div>
+  <div class="quote">
+    <blockquote>Frugality represents a balance between conspicuous consumption and stinginess or hoarding. We value money not for its own sake, but as a resource for good.</blockquote>
+    <cite>— Reb Rez, on Mussar and Frugality</cite>
+  </div>
+  <div class="quote">
+    <blockquote>Many of us have difficulty being truly frugal because of an innate dissatisfaction we have trouble quelling — this fleeting wanting, wanting, wanting.</blockquote>
+    <cite>— Riverton Mussar, on Keemutz</cite>
+  </div>
+  <div class="quote gold">
+    <blockquote>Each citizen's contribution is a treasure to the whole of our nation — conservation of our precious human and earthly resources.</blockquote>
+    <cite>— Contemporary Mussar, Prayer for the Country</cite>
+  </div>
+</section>
+
+<hr />
+
+<section id="path-a">
+  <div class="section-tag gold">Choose Your Path</div>
+  <h2>Two Practice Paths</h2>
+  <p class="lead">Choose the path that fits where you are — or weave them together in the second week.</p>
+  <div class="path-toggle">
+    <button class="path-btn active" onclick="showPath('a', this)">Path A: Kimmutz Alone</button>
+    <button class="path-btn" onclick="showPath('b', this)">Path B: Integration</button>
+  </div>
+  <div id="pathA" class="path-content visible">
+    <div class="practice">
+      <div class="practice-label">Path A</div>
+      <p><strong>Work Kimmutz for the full two weeks.</strong> Use the mantra, the daily practice, the weekly prompts below, and the tracker.</p>
+      <ul class="q-list">
+        <li><span>Morning: name one resource to use mindfully today</span></li>
+        <li><span>Throughout the day: the pause before non-essential purchases</span></li>
+        <li><span>Weekly: try the One-Week Challenge described below</span></li>
+        <li><span>Evening: journal one observation about spending or waste each day</span></li>
+      </ul>
+    </div>
+  </div>
+  <div id="pathB" class="path-content">
+    <div class="practice teal">
+      <div class="practice-label teal">Path B: Weaving It In</div>
+      <p><strong>Connect Kimmutz to Savlanut and Sh'tikah.</strong> Notice how patience and silence already touch how you spend, waste, and want.</p>
+    </div>
+    <div style="margin-top:1rem;">
+      <div class="integration-card">
+        <div class="integration-icon">⏳</div>
+        <div>
+          <div class="integration-label">Kimmutz + Savlanut</div>
+          <div class="integration-title">Frugality Needs Patience</div>
+          <div class="integration-body">Impulsive spending is often impatience in disguise. Where could a moment of Savlanut prevent an unnecessary purchase?</div>
+        </div>
+      </div>
+      <div class="integration-card">
+        <div class="integration-icon">🤐</div>
+        <div>
+          <div class="integration-label">Kimmutz + Sh'tikah</div>
+          <div class="integration-title">Silence Before Spending</div>
+          <div class="integration-body">Just as Sh'tikah asks us to pause before speaking, Kimmutz asks us to pause before acquiring. What would a 3-second rule for spending look like?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section id="week1">
+  <div class="section-tag">Two-Week Prompts</div>
+  <h2>Torah Prompts — Two Weeks of Kimmutz</h2>
+  <p class="lead">One text, one theme, and one practice focus per week.</p>
+
+  <div class="prompt-week">
+    <div class="prompt-week-header">
+      <div class="prompt-week-title">Week 1: Noticing Enough</div>
+      <div class="prompt-week-badge">July 10 – 16</div>
+    </div>
+    <div class="prompt-week-body">
+      <div class="prompt-source">Cheshbon HaNefesh</div>
+      <div class="prompt-verse">Be careful with your money. Do not spend even a penny needlessly, and do not withhold spending on anything that is truly needed.</div>
+      <ul class="q-list">
+        <li><span>Where this week did you spend or use something without thinking?</span></li>
+        <li><span>What is the difference between needing something and wanting it right now?</span></li>
+        <li><span>Where have you been withholding even from a real need — your own or someone else's?</span></li>
+        <li><span>What is one resource in your life you tend to take for granted?</span></li>
+      </ul>
+      <div class="practice" style="margin-top:.875rem;">
+        <div class="practice-label">Week 1 Practice</div>
+        <p><strong>The One-Week Challenge.</strong> Choose a single area of daily consumption — coffee, food waste, a subscription, impulse purchases — and track it closely every day.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prompt-week" id="week2">
+    <div class="prompt-week-header week2">
+      <div class="prompt-week-title">Week 2: Gratitude &amp; Restraint</div>
+      <div class="prompt-week-badge">July 17 – 23</div>
+    </div>
+    <div class="prompt-week-body">
+      <div class="prompt-source">Hakarat Ha'tov &amp; Bitachon</div>
+      <div class="prompt-verse">Recognizing that you are provided for helps alleviate the anxiety or deprivation that often drives impulsive buying.</div>
+      <ul class="q-list">
+        <li><span>What did tracking your consumption this week reveal about your habits?</span></li>
+        <li><span>Where did gratitude — rather than anxiety — shape a choice about money or resources?</span></li>
+        <li><span>Did you find yourself hoarding or over-restricting anywhere? What was underneath that?</span></li>
+        <li><span>What would it feel like to trust that you have "enough" without checking again?</span></li>
+      </ul>
+      <div class="practice" style="margin-top:.875rem;">
+        <div class="practice-label">Week 2 Practice</div>
+        <p><strong>Pair Kimmutz with Gratitude.</strong> Each evening, name one thing you already own or already have that fully satisfies its purpose — no upgrade needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+
+<section id="tracker">
+  <div class="section-tag">Habit Tracker</div>
+  <h2>Two-Week Tracker</h2>
+  <p class="lead">Check off each day you practiced your morning check-in and completed an evening journal entry.</p>
+  <h4>Morning Check-In</h4>
+  <div class="day-grid" id="checkinGrid"></div>
+  <h4 style="margin-top:1.5rem;">Evening Journal Entry</h4>
+  <div class="day-grid" id="journalGrid"></div>
+  <p id="trackerSummary" style="font-size:.85rem;color:var(--green);font-weight:500;margin-top:1rem;"></p>
+</section>
+
+<section id="resources">
+  <div class="section-tag">Links &amp; Study</div>
+  <h2>Resources</h2>
+  <ul class="resource-list">
+    <li><span>📖</span><a href="https://www.contemporarymussar.org/middot" target="_blank" rel="noopener noreferrer">Contemporary Mussar — 18 Middot of Cheshbon HaNefesh</a></li>
+    <li><span>📝</span><a href="https://rebrez.wordpress.com/2010/11/20/mussar-frugality/" target="_blank" rel="noopener noreferrer">Reb Rez — Mussar: Frugality</a></li>
+    <li><span>🎧</span><a href="https://arnemancy.com/articles/kabbalah/getting-started-with-mussar/" target="_blank" rel="noopener noreferrer">Arnemancy — Getting Started with Mussar</a></li>
+    <li><span>🕯️</span><a href="https://www.mussarinstitute.org/" target="_blank" rel="noopener noreferrer">The Mussar Institute — Study Groups &amp; Courses</a></li>
+    <li><span>🔗</span><a href="Sh-tikah-Silence-Mussar-Practice.html">Sh'tikah — Silence Practice Notes</a></li>
+  </ul>
+</section>
+
+</main>
+</div>
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+
+let theme = 'light';
+function toggleTheme() {
+  theme = theme === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeBtn').textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+}
+
+function showPath(path, btn) {
+  document.querySelectorAll('.path-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.path-content').forEach(c => c.classList.remove('visible'));
+  btn.classList.add('active');
+  document.getElementById(path === 'a' ? 'pathA' : 'pathB').classList.add('visible');
+}
+
+const trackerData = { checkin: {}, journal: {} };
+const startDate = new Date('2026-07-10');
+function buildGrid(containerId, key) {
+  const container = document.getElementById(containerId);
+  const days = ['S','M','T','W','T','F','S'];
+  for (let i = 0; i < 14; i++) {
+    const d = new Date(startDate);
+    d.setDate(d.getDate() + i);
+    const label = (d.getMonth()+1) + '/' + d.getDate();
+    const cell = document.createElement('div');
+    cell.className = 'day-cell';
+    cell.innerHTML = '<span class="day-num">' + label + '</span><span class="day-icon">' + days[d.getDay()] + '</span>';
+    cell.onclick = () => {
+      trackerData[key][i] = !trackerData[key][i];
+      cell.className = 'day-cell' + (trackerData[key][i] ? ' checked' : '');
+      cell.innerHTML = '<span class="day-num">' + label + '</span><span class="day-icon">' + days[d.getDay()] + '</span>';
+      updateSummary();
+    };
+    container.appendChild(cell);
+  }
+}
+function updateSummary() {
+  const c = Object.values(trackerData.checkin).filter(Boolean).length;
+  const j = Object.values(trackerData.journal).filter(Boolean).length;
+  document.getElementById('trackerSummary').textContent = 'Check-ins: ' + c + '/14   Journal: ' + j + '/14';
+}
+buildGrid('checkinGrid', 'checkin');
+buildGrid('journalGrid', 'journal');
+updateSummary();
+</script>
+</body>
+</html>
