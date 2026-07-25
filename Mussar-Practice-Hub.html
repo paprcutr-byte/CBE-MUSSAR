@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mussar Practice Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root,[data-theme="light"]{--bg:#f9f7f2;--surface:#ffffff;--surface-2:#f3f0ea;--border:#e0dbd0;--text:#1e1b14;--muted:#6b6558;--faint:#b0aa9e;--gold:#b8860b;--gold-light:#f5eed8;--blue:#1a3a6e;--blue-light:#e8eef8;--teal:#1a6b6e;--teal-light:#e0f0f0;--shadow:0 8px 32px rgba(0,0,0,.08);--radius:.85rem;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Inter',sans-serif}
+    [data-theme="dark"]{--bg:#0f0e0b;--surface:#1a1916;--surface-2:#222018;--border:#2e2c26;--text:#e8e3d8;--muted:#a8a092;--faint:#6c665a;--gold:#d4a017;--gold-light:#2a2416;--blue:#7aa2e3;--blue-light:#152033;--teal:#58aeb1;--teal-light:#0f2526;--shadow:0 8px 32px rgba(0,0,0,.35)}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6}
+    .wrap{max-width:1100px;margin:0 auto;padding:2rem 1.25rem 4rem}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}.theme-btn{border:1px solid var(--border);background:var(--surface);color:var(--muted);padding:.55rem .9rem;border-radius:999px;cursor:pointer}
+    .hero{background:linear-gradient(135deg,var(--surface),var(--blue-light));border:1px solid var(--border);border-radius:1.2rem;padding:2rem;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center}.hero h1{font-family:var(--font-display);font-size:3.2rem;line-height:1}.hero p{color:var(--muted);max-width:62ch}.hebrew{font-family:var(--font-display);font-size:4.6rem;color:var(--blue);opacity:.25;direction:rtl}
+    .eyebrow{display:inline-block;background:var(--gold-light);color:var(--gold);border:1px solid rgba(184,134,11,.25);padding:.25rem .7rem;border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.75rem}
+    .section{margin-top:2rem}.section h2{font-family:var(--font-display);font-size:2rem;margin-bottom:.5rem}.muted{color:var(--muted)}
+    .progress{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.1rem;margin-top:1rem}.progress strong{color:var(--blue)}
+    .grid{display:grid;grid-template-columns:1.25fr .95fr;gap:1.25rem;margin-top:1.25rem}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+    .status{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;margin-bottom:.7rem}.status.active{background:var(--blue-light);color:var(--blue)}.status.done{background:var(--gold-light);color:var(--gold)}.status.upcoming{background:var(--teal-light);color:var(--teal)}
+    .hebrew-title{font-family:var(--font-display);font-size:2rem;margin-bottom:.2rem}.middah{font-family:var(--font-display);font-size:1.8rem}.sub{color:var(--muted);font-size:.95rem}.dates{font-size:.88rem;color:var(--blue);font-weight:600;margin:.55rem 0}.link{display:inline-block;margin-top:.9rem;text-decoration:none;background:var(--blue);color:white;padding:.65rem .95rem;border-radius:999px;font-weight:600}.link.secondary{background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+    .mini{display:grid;gap:.8rem}.mini-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}.mini-card h3{font-family:var(--font-display);font-size:1.35rem}.mini-card p{color:var(--muted);font-size:.9rem}
+    .upcoming{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}.up-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
+    .footer-note{margin-top:1.5rem;color:var(--muted);font-size:.92rem}
+    @media (max-width:800px){.hero{grid-template-columns:1fr}.hebrew{display:none}.grid,.upcoming{grid-template-columns:1fr}.hero h1{font-size:2.5rem}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div></div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Light mode</button>
+    </div>
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Cheshbon HaNefesh</div>
+        <h1>One Soul Trait<br>at a Time</h1>
+        <p>Mantra, mindful observation, journaling — two weeks with each middah, then the group decides what comes next.</p>
+      </div>
+      <div class="hebrew">חֶשְׁבּוֹן הַנֶּפֶשׁ</div>
+    </section>
+
+    <section class="section">
+      <h2>Year Progress</h2>
+      <p class="muted">2026 · 18 Middot</p>
+      <div class="progress"> <strong>4 of 18 middot</strong> · Savlanut ✓ Complete · Sh'tikah ✓ Complete · Kimmutz ✓ Complete · Emet ▶ Active</div>
+    </section>
+
+    <section class="section grid">
+      <div class="card">
+        <div class="status active">Active Now</div>
+        <div class="dates">July 25 – August 6, 2026 · Two-week practice</div>
+        <div class="hebrew-title">אֱמֶת</div>
+        <div class="middah">Emet — Truth</div>
+        <p class="sub">Honesty · Sincerity · Wholeness</p>
+        <p style="margin-top:.8rem;color:var(--muted)">When our words, actions, and inner life align. This practice explores inner truth, truth in relationship, and the courage to speak clearly and gently.</p>
+        <a class="link" href="Emet-Truth-Mussar-Practice.html">Open Emet Practice →</a>
+      </div>
+
+      <div class="mini">
+        <div class="mini-card">
+          <div class="status done">Completed</div>
+          <h3>Savlanut — Patience</h3>
+          <p>The practice of bearing delay, discomfort, and frustration without resentment.</p>
+        </div>
+        <div class="mini-card">
+          <div class="status done">Completed</div>
+          <h3>Sh'tikah — Silence</h3>
+          <p>Deliberate speech, guarding the tongue, and learning the holy pause before words.</p>
+          <a class="link secondary" href="Sh-tikah-Silence-Mussar-Practice.html">Open Sh'tikah →</a>
+        </div>
+        <div class="mini-card">
+          <div class="status done">Completed</div>
+          <h3>Kimmutz — Frugality</h3>
+          <p>Mindful sufficiency, wise stewardship, and gratitude for what we already have.</p>
+          <a class="link secondary" href="kimmutz.html">Open Kimmutz →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Coming Up</h2>
+      <p class="muted">The group decides — this is a menu, not a fixed order.</p>
+      <div class="upcoming">
+        <div class="up-card"><div class="status upcoming">Upcoming</div><div class="hebrew-title">עֲנָוָה</div><div class="middah" style="font-size:1.45rem">Anavah — Humility</div><p class="sub">Occupy your rightful space — neither too much nor too little.</p></div>
+        <div class="up-card"><div class="status upcoming">Upcoming</div><div class="hebrew-title">בִּטָּחוֹן</div><div class="middah" style="font-size:1.45rem">Bitachon — Trust</div><p class="sub">Confidence, equanimity, and steadiness in uncertainty.</p></div>
+        <div class="up-card"><div class="status upcoming">Upcoming</div><div class="hebrew-title">זְרִיזוּת</div><div class="middah" style="font-size:1.45rem">Zerizut — Alacrity</div><p class="sub">Swift, purposeful action when the moment calls.</p></div>
+        <div class="up-card"><div class="status upcoming">Upcoming</div><div class="hebrew-title">נְדִיבוּת</div><div class="middah" style="font-size:1.45rem">Nedivut — Generosity</div><p class="sub">Open hand, open heart, open door.</p></div>
+      </div>
+      <p class="footer-note">To update your GitHub Pages landing page, replace the contents of <code>index.html</code> with this file and upload <code>Emet-Truth-Mussar-Practice.html</code> alongside it.</p>
+    </section>
+  </div>
+<script>
+let theme='light';
+function toggleTheme(){theme=theme==='light'?'dark':'light';document.documentElement.setAttribute('data-theme',theme);document.getElementById('themeBtn').textContent=theme==='dark'?'Light mode':'Dark mode';}
+</script>
+</body>
+</html>
